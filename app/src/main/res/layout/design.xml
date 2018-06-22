@@ -23,23 +23,25 @@
         />
 
     <Button
-        android:id="@+id/illust"
+        android:id="@+id/DeAi"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:text="ADOBE ILLUSTRATOR"
-        android:backgroundTint="#ffffff"
+        android:background="@drawable/main_button2"
         android:textAlignment="textStart"
+        android:padding="10dp"
         />
 
     <Button
-        android:id="@+id/photo"
+        android:id="@+id/DePh"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="100dp"
-        android:backgroundTint="#ffffff"
+        android:background="@drawable/main_button2"
+        android:padding="10dp"
         android:text="ADOBE PHOTOSHOP"
         android:textAlignment="textStart"
-
+        android:layout_marginVertical="99dp"
         />
 
 </RelativeLayout>

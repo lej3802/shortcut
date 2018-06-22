@@ -1,5 +1,7 @@
 package com.example.mirim.shortcut;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,9 +20,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
+    SQLiteDatabase DB;
+    String dbresult = "";
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
      * fragments for each of the sections. We use a
@@ -41,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        setDatabase();
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
@@ -60,12 +67,41 @@ public class MainActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, dbresult, Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
 
+
+
     }
+
+    private void setDatabase() {
+        //데이터베이스 객체가 data 라는 테이블이 있으면 열고 없으면 생성하라는 뜻
+        DB = openOrCreateDatabase("data", Context.MODE_PRIVATE, null);
+        dbresult+="db cre, ";
+
+        //테이블 생성
+        if(DB.isOpen()){
+            String sql = "drop table data";
+            DB.execSQL(sql);
+            dbresult+="tab drop, ";
+        }
+        String sql = "create table if not exists " + "data (" +
+                    "id integer primary key autoincrement, " +
+                    "pgname text," +
+                    "shortkey text," +
+                    "dowhat text," +
+                    "star integer" +
+                    ")";
+
+            DB.execSQL(sql);
+            dbresult += "tab cre, ";
+
+        dbresult+=insertRecord();
+    }
+
+
 
 
     @Override
@@ -137,4 +173,49 @@ public class MainActivity extends AppCompatActivity {
             return null;
         }
     }
+
+    private String insertRecord() {
+        //illustrator
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+Alt+P', 'document로 설정',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+F', '제자리 위에 붙여넣기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+B', '제자리 뒤에 붙여넣기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+D', '변형 작업 반복',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+7', 'Cliping mask 생성',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+Alt+7', 'Cliping mask 해제',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+;', '안내선 보기/숨기기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+Shift+J', '정렬 초기화',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'F7', 'Simbol 생성',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'F12', '저장 시점으로 되돌리기',0);");
+
+        //Photoshop
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh', 'Ctrl+Alt+Z', '연속 작업 취소',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+Alt+I', '이미지 크기 조절',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+A', '전체 선택',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+G', '레이어 그룹화',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+(+/-)', '화면 확대/축소',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+O', '이미지 열기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+T', '이미지 자유 변형',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+Shift+;', '스냅 선택/해제',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+U', '색조/채도 메뉴',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh','Ctrl+Alt+C', '캔버스 사이즈 조절',0);");
+
+        //eclipse
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Ctrl+Shift+/', '블록 주석(/* */)처리',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Ctrl+Alt+↓', '현재 라인 복사, 아래 붙여넣기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Ctrl+K', '(블록 지정)문자열 찾기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'F3', '선언 위치 찾기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Ctrl+M', '창 키우기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Ctrl+Q', '마지막 편집장소로 이동',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Alt+↑/↓', '줄 위치 조정',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Alt+Shift+R', '파일 찾기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Alt+Shift+J', '자동 주석',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Ctrl+Space', '자동 완성',0);");
+
+
+
+        return "rec ok, ";
+    }
+
 }
+
+

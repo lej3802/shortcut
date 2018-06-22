@@ -23,26 +23,37 @@
         />
 
     <Button
-        android:id="@+id/hangul"
+        android:id="@+id/WoHn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:text="한컴오피스 한글"
+        android:background="@drawable/main_button2"
+        android:textAlignment="textStart"
+        android:padding="10dp"
         />
 
     <Button
-        android:id="@+id/ppt"
+        android:id="@+id/WoPt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginTop="100dp"
         android:text="파워포인트"
+        android:background="@drawable/main_button2"
+        android:textAlignment="textStart"
+        android:padding="10dp"
+        android:layout_marginVertical="99dp"
         />
 
     <Button
-        android:id="@+id/excel"
+        android:id="@+id/WoEx"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="99dp"
         android:layout_marginTop="200dp"
         android:text="엑셀"
+        android:background="@drawable/main_button2"
+        android:textAlignment="textStart"
+        android:padding="10dp"
+        android:layout_marginVertical="198dp"
         />
 
 </RelativeLayout>

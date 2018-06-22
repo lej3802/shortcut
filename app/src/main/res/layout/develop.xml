@@ -23,26 +23,37 @@
         />
 
     <Button
-        android:id="@+id/eclipse"
+        android:id="@+id/DvEc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:text="ECLIPSE"
+        android:background="@drawable/main_button2"
+        android:textAlignment="textStart"
+        android:padding="10dp"
         />
 
     <Button
-        android:id="@+id/editplus"
+        android:id="@+id/DvEd"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_height="100dp"
         android:text="EDITPLUS"
+        android:background="@drawable/main_button2"
+        android:textAlignment="textStart"
+        android:padding="10dp"
+        android:layout_marginVertical="99dp"
+
         />
 
     <Button
-        android:id="@+id/visual"
+        android:id="@+id/DvVs"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_height="99dp"
         android:text="VISUAL STUDIO"
+        android:background="@drawable/main_button2"
+        android:textAlignment="textStart"
+        android:padding="10dp"
+        android:layout_marginVertical="198dp"
+
         />
 
 </RelativeLayout>
