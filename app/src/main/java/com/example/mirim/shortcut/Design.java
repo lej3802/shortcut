@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class Design extends Fragment {
+public class Design extends Fragment implements View.OnClickListener{
     Button ai,ph;
 
     @Override
@@ -19,13 +19,20 @@ public class Design extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.design, container, false);
 
+        ai = rootView.findViewById(R.id.DeAi);
+        ph = rootView.findViewById(R.id.DePh);
+
+        ai.setOnClickListener(this);
+        ph.setOnClickListener(this);
+
         return rootView;
     }
 
-    public void onSent() {
+    @Override
+    public void onClick(View view) {
         Intent intent;
         intent = new Intent(getActivity(),Send.class);
-        //intent.putExtra("text", String.valueOf(editText.getText()));
+        intent.putExtra("key", String.valueOf(view.getId()));
         startActivity(intent);
     }
 }

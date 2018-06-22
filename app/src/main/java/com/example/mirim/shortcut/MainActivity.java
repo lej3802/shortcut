@@ -19,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -71,8 +72,6 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-
-
 
     }
 
@@ -211,6 +210,17 @@ public class MainActivity extends AppCompatActivity {
         DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Alt+Shift+J', '자동 주석',0);");
         DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvEc', 'Ctrl+Space', '자동 완성',0);");
 
+        //visual studio
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Ctrl+Shift+F2', '지정된 모든 북마크 해제 ',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Ctrl+F', '문자열 찾기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Alt+드래그', '세로로 블록 설정',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Shift+F12', '선언으로 이동',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Ctrl+]', '괄호 짝 찾아주기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Ctrl+Shift+L', '줄 삭제',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Ctrl+Space', '자동완성',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Alt+F8;', '인덴트 정리',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Ctrl+K', '주석 처리/해제',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DvVs', 'Ctrl+C/U', '선택 주석 처리/해제',0);");
 
 
         return "rec ok, ";
