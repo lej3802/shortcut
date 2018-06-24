@@ -25,9 +25,7 @@ public class Send extends AppCompatActivity{
         Intent intent = getIntent();
 
         String name = intent.getExtras().getString("key");
-
-
-
+/*
         listView =(ListView)findViewById(R.id.list_view);
 
         InputData1.put("school","서울대");
@@ -44,7 +42,9 @@ public class Send extends AppCompatActivity{
 
 
 
-
+*/
         //받아온 값을 통해 쿼리를 돌리고 리사이클러 뷰로 다시 출력한다. 모든 뷰를 한 xml에서 처리한다. 효율적이게.
+
+
     }
 }
