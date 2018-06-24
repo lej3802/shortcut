@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Design extends Fragment implements View.OnClickListener{
     Button ai,ph;
@@ -22,8 +23,8 @@ public class Design extends Fragment implements View.OnClickListener{
         ai = rootView.findViewById(R.id.DeAi);
         ph = rootView.findViewById(R.id.DePh);
 
-        ai.setOnClickListener(this);
-        ph.setOnClickListener(this);
+        ai.setOnClickListener(this);    //2131230722
+        ph.setOnClickListener(this);    //2131230723
 
         return rootView;
     }
@@ -33,6 +34,7 @@ public class Design extends Fragment implements View.OnClickListener{
         Intent intent;
         intent = new Intent(getActivity(),Send.class);
         intent.putExtra("key", String.valueOf(view.getId()));
+        Toast.makeText(getActivity(), String.valueOf(view.getId()), Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 }
