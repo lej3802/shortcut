@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Send"></activity>
+         <activity android:name=".Send"></activity>
     </application>
 
 </manifest>

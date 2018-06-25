@@ -91,15 +91,15 @@ public class MainActivity extends AppCompatActivity {
 
         //테이블 생성
         String sql = "create table if not exists " + "data (" +
-                    "id integer primary key autoincrement, " +
-                    "pgname text," +
-                    "shortkey text," +
-                    "dowhat text," +
-                    "star integer" +
-                    ")";
+                "id integer primary key autoincrement, " +
+                "pgname text," +
+                "shortkey text," +
+                "dowhat text," +
+                "star integer" +
+                ")";
 
-            DB.execSQL(sql);
-            dbresult += "tab cre, ";
+        DB.execSQL(sql);
+        dbresult += "tab cre, ";
 
         dbresult+=insertRecord();
     }
