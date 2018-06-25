@@ -21,6 +21,7 @@
         </activity>
 
          <activity android:name=".Send"></activity>
+        <activity android:name=".Stars"></activity>
     </application>
 
 </manifest>

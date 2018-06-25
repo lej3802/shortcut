@@ -1,10 +1,12 @@
 package com.example.mirim.shortcut;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -23,13 +25,14 @@ public class Send extends AppCompatActivity{
         super.onCreate(savedInstanceState);
 //        super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.send);
-        /*Intent intent = getIntent();
 
-        String name = intent.getExtras().getString("key");*/
+        Intent intent = getIntent();
 
+        String name = intent.getExtras().getString("key");
 
-        Toast.makeText(this, "asdfasdf", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
 
+        /*
         listView =(ListView)findViewById(R.id.list_view);
 
         InputData1.put("school","서울대");
@@ -44,6 +47,7 @@ public class Send extends AppCompatActivity{
         SimpleAdapter simpleAdapter = new SimpleAdapter(this,Data,android.R.layout.simple_list_item_2,
                 new String[]{"school","name"},new int[]{android.R.id.text1,android.R.id.text2});
         listView.setAdapter(simpleAdapter);
+*/
 
 
         //받아온 값을 통해 쿼리를 돌리고 리사이클러 뷰로 다시 출력한다. 모든 뷰를 한 xml에서 처리한다. 효율적이게.
