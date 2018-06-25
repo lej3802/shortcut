@@ -30,8 +30,17 @@ public class Task extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(getActivity(),Send.class);
-        intent.putExtra("key", String.valueOf(view.getId()));
-        Toast.makeText(getActivity(), String.valueOf(view.getId()), Toast.LENGTH_LONG).show();
+
+        String key;
+        switch(view.getId()){
+            case R.id.WoHn: key = "WoHn"; break;
+            case R.id.WoEx: key = "WoEx"; break;
+            case R.id.WoPt: key = "WoPt"; break;
+            default : key="error"; break;
+        }
+
+        intent.putExtra("key", key);
+        //Toast.makeText(getActivity(), key, Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 }

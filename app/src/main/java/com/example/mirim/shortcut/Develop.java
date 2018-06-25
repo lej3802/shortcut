@@ -30,8 +30,16 @@ public class Develop  extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(getActivity(),Send.class);
-        intent.putExtra("key", String.valueOf(view.getId()));
-        Toast.makeText(getActivity(), String.valueOf(view.getId()), Toast.LENGTH_LONG).show();
+        String key;
+        switch(view.getId()){
+            case R.id.DvEc: key = "DvEc"; break;
+            case R.id.DvEd: key = "DvEd"; break;
+            case R.id.DvVs: key = "DvVs"; break;
+            default : key="error"; break;
+        }
+
+        intent.putExtra("key", key);
+        //Toast.makeText(getActivity(), key, Toast.LENGTH_LONG).show();
         startActivity(intent);
     }
 }
