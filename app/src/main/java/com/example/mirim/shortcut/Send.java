@@ -86,10 +86,19 @@ public class Send extends AppCompatActivity{
         int max = shortkey.size() / 45;
 
         for(int i=0;i<max;i++) {
-            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.round_favorite_black_18dp),
-                    shortkey.get(i), dowhat.get(i));
+            if(stars.get(i)==0) {
+                adapter.addItem(ContextCompat.getDrawable(this, R.drawable.bin_heart),
+                        shortkey.get(i), dowhat.get(i));
+            }
+            else{
+                adapter.addItem(ContextCompat.getDrawable(this, R.drawable.full_heart),
+                        shortkey.get(i), dowhat.get(i));
+            }
         }
 
+
+
+        /*
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
@@ -100,10 +109,17 @@ public class Send extends AppCompatActivity{
                 String descStr = item.getDesc() ;
                 Drawable iconDrawable = item.getIcon() ;
 
+                Drawable changeIcon = R.drawable.full_heart;
+
+                item.setIcon();
 
                 // TODO : use item data.
             }
         }) ;
+
+        */
+
+
 
         //Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
 
