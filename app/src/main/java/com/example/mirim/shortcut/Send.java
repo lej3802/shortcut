@@ -1,6 +1,9 @@
 package com.example.mirim.shortcut;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -17,24 +20,24 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Send extends AppCompatActivity{
     /*private ArrayList<HashMap<String,String>> Data = new ArrayList<HashMap<String, String>>();
     private HashMap<String,String> InputData1 = new HashMap<>();
     private HashMap<String,String> InputData2 = new HashMap<>();
     private ListView listView;*/
-
-
-
-
+    SQLiteDatabase DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
-//        super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.send);
 
         Intent intent = getIntent();
         String name = intent.getExtras().getString("key");
+        //Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
 
         ListView listview ;
         ListViewAdapter adapter;
@@ -47,7 +50,7 @@ public class Send extends AppCompatActivity{
         listview.setAdapter(adapter);
 
 
-
+/*
         // 첫 번째 아이템 추가.
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.round_favorite_black_18dp),
                 "Box", "Account Box Black 36dp") ;
@@ -57,7 +60,35 @@ public class Send extends AppCompatActivity{
         // 세 번째 아이템 추가.
         adapter.addItem(ContextCompat.getDrawable(this, R.drawable.round_favorite_black_18dp),
                 "Ind", "Assignment Ind Black 36dp") ;
+*/
+        DB = openOrCreateDatabase("data", Context.MODE_PRIVATE, null);
 
+
+        String sql = "select * from data where pgname='"+name+"';";
+        //id pgname shortkey dowhat star
+        List<String> shortkey = new ArrayList<String>();
+        List<String> dowhat = new ArrayList<String>();
+        List<Integer> stars = new ArrayList<Integer>();
+
+        Cursor result = DB.rawQuery(sql,null);
+
+        result.moveToFirst();
+
+        while(result.moveToNext()){
+            shortkey.add(result.getString(result.getColumnIndex("shortkey")));
+            dowhat.add(result.getString(result.getColumnIndex("dowhat")));
+            stars.add(result.getInt(result.getColumnIndex("star")));
+            if(result.isLast()) break;
+        }
+
+        result.close();
+
+        int max = shortkey.size() / 45;
+
+        for(int i=0;i<max;i++) {
+            adapter.addItem(ContextCompat.getDrawable(this, R.drawable.round_favorite_black_18dp),
+                    shortkey.get(i), dowhat.get(i));
+        }
 
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -73,16 +104,6 @@ public class Send extends AppCompatActivity{
                 // TODO : use item data.
             }
         }) ;
-
-
-
-
-
-
-
-
-
-
 
         //Toast.makeText(this, name, Toast.LENGTH_SHORT).show();
 

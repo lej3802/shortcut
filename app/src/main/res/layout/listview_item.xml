@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="5dp"
+    >
 
     <ImageView
-        android:layout_width="wrap_content"
+        android:layout_width="5dp"
         android:layout_height="match_parent"
         android:id="@+id/imageView1"
-        android:layout_weight="1" />
+        android:layout_weight="2" />
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="match_parent"
-        android:layout_weight="4">
+        android:layout_weight="4"
+        android:paddingLeft="20dp">
 
         <TextView
             android:layout_width="match_parent"
@@ -34,8 +38,5 @@
             android:textColor="#666666"
             android:layout_weight="1" />
     </LinearLayout>
-
-
-    출처: http://recipes4dev.tistory.com/43 [개발자를 위한 레시피]
 
 </LinearLayout>
