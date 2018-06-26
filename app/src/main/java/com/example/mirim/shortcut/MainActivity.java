@@ -64,18 +64,19 @@ public class MainActivity extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
-
+        /*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 /*Snackbar.make(view, dbresult, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();*/
+                        .setAction("Action", null).show();
                 Intent intent = new Intent(getApplicationContext(),Stars.class);
                 startActivity(intent);
             }
         });
 
+*/
     }
 
     private void setDatabase() {
@@ -84,12 +85,13 @@ public class MainActivity extends AppCompatActivity {
         dbresult+="db cre, ";
 
         //테이블 열렸으면 삭제
-        /*if(DB.isOpen()){
+
+        if(DB.isOpen()){
             String sql = "drop table data";
             DB.execSQL(sql);
             dbresult+="tab drop, ";
         }
-        */
+
 
 
         //테이블 생성
@@ -193,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+;', '안내선 보기/숨기기',0);");
         DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'Ctrl+Shift+J', '정렬 초기화',0);");
         DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'F7', 'Simbol 생성',0);");
-        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'F12', '저장 시점으로 되돌리기',0);");
+        DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DeAi', 'F12', '저장 시점으로 되돌리기',1);");
 
         //Photoshop
         DB.execSQL("insert into " + "data" + "(pgname, shortkey, dowhat,star) values ('DePh', 'Ctrl+Alt+Z', '연속 작업 취소',0);");

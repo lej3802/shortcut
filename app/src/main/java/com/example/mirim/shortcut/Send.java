@@ -83,7 +83,7 @@ public class Send extends AppCompatActivity{
 
         result.close();
 
-        int max = shortkey.size() / 45;
+        int max = shortkey.size();
 
         for(int i=0;i<max;i++) {
             if(stars.get(i)==0) {
