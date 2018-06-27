@@ -5,15 +5,18 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Toast;
@@ -27,11 +30,18 @@ public class Send extends AppCompatActivity{
     private HashMap<String,String> InputData1 = new HashMap<>();
     private HashMap<String,String> InputData2 = new HashMap<>();
     private ListView listView;*/
+
+    List<String> shortkey = new ArrayList<String>();
+    List<String> dowhat = new ArrayList<String>();
+    List<Integer> stars = new ArrayList<Integer>();
+    List<String> pgname = new ArrayList<String>();
+
+
+    private boolean check = false;
+
     SQLiteDatabase DB;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.send);
 
@@ -48,6 +58,8 @@ public class Send extends AppCompatActivity{
         // 리스트뷰 참조 및 Adapter달기
         listview = (ListView) findViewById(R.id.list_view);
         listview.setAdapter(adapter);
+
+        ImageView star_img = (ImageView)findViewById(R.id.imageView1);
 
 
 /*
@@ -66,20 +78,20 @@ public class Send extends AppCompatActivity{
 
         String sql = "select * from data where pgname='"+name+"';";
         //id pgname shortkey dowhat star
-        List<String> shortkey = new ArrayList<String>();
-        List<String> dowhat = new ArrayList<String>();
-        List<Integer> stars = new ArrayList<Integer>();
+
 
         Cursor result = DB.rawQuery(sql,null);
 
-        result.moveToFirst();
+        while(result.moveToNext()) {
 
-        while(result.moveToNext()){
+            pgname.add(result.getString(result.getColumnIndex("pgname")));
+
             shortkey.add(result.getString(result.getColumnIndex("shortkey")));
             dowhat.add(result.getString(result.getColumnIndex("dowhat")));
             stars.add(result.getInt(result.getColumnIndex("star")));
-            if(result.isLast()) break;
+            if (result.isLast()) break;
         }
+
 
         result.close();
 
@@ -87,37 +99,68 @@ public class Send extends AppCompatActivity{
 
         for(int i=0;i<max;i++) {
             if(stars.get(i)==0) {
-                adapter.addItem(ContextCompat.getDrawable(this, R.drawable.bin_heart),
-                        shortkey.get(i), dowhat.get(i));
-            }
-            else{
-                adapter.addItem(ContextCompat.getDrawable(this, R.drawable.full_heart),
-                        shortkey.get(i), dowhat.get(i));
+                if(pgname.get(i).equals("DeAi") == true) {
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.illustrator),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.get(i).equals("DePh") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.photoshop),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.get(i).equals("DvEc") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.eclipse),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.get(i).equals("DvVs") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.visualstudio),
+                            shortkey.get(i), dowhat.get(i));
+                }
+
+                else if(pgname.get(i).equals("DvEd") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.editplus),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.get(i).equals("WoHn") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.hangul),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.get(i).equals("WoEx") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.excel),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else /*if(pgname.equals("WoPt") == true)*/{
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.powerpoint),
+                            shortkey.get(i), dowhat.get(i));
+                }
             }
         }
 
 
 
-        /*
+
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View v, int position, long id) {
-                // get item
-                ListViewItem item = (ListViewItem) parent.getItemAtPosition(position) ;
+               /* // get item
+                ListViewItem item = (ListViewItem) parent.getItemAtPosition(position);
+                ImageView star_img = (ImageView)findViewById(R.id.imageView1);
 
                 String titleStr = item.getTitle() ;
                 String descStr = item.getDesc() ;
                 Drawable iconDrawable = item.getIcon() ;
 
-                Drawable changeIcon = R.drawable.full_heart;
+                //boolean check = false;
 
-                item.setIcon();
+                if(star_img.equals(android.R.drawable.btn_star_big_off) != true){
 
-                // TODO : use item data.
+                    star_img.setBackgroundResource(android.R.drawable.btn_star_big_on);
+
+
+                }else{
+                    star_img.setBackgroundResource(android.R.drawable.btn_star_big_off);
+                }*/
             }
         }) ;
-
-        */
 
 
 

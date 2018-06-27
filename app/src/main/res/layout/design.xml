@@ -41,7 +41,6 @@
         android:padding="10dp"
         android:text="ADOBE PHOTOSHOP"
         android:textAlignment="textStart"
-        android:layout_marginVertical="99dp"
         />
 
 </RelativeLayout>

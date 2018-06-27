@@ -37,21 +37,24 @@
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DEVELOP" />
+                android:text="DEVELOP"
+                barColorWhenSelected="#ffe082"/>
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="DESIGN" />
+                android:text="DESIGN"
+                barColorWhenSelected="#ffffb3"/>
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="WORK" />
+                android:text="WORK"
+                barColorWhenSelected="#caae53"/>
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>

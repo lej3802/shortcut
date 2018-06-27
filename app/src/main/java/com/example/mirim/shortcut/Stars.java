@@ -8,6 +8,7 @@ import android.os.PersistableBundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -51,12 +52,16 @@ public class Stars extends AppCompatActivity {
         List<String> shortkey = new ArrayList<String>();
         List<String> dowhat = new ArrayList<String>();
         List<Integer> stars = new ArrayList<Integer>();
+        List<String> pgname = new ArrayList<String>();
 
         Cursor result = DB.rawQuery(sql,null);
 
         result.moveToFirst();
 
         while(result.moveToNext()){
+
+            pgname.add(result.getString(result.getColumnIndex("pgname")));
+
             shortkey.add(result.getString(result.getColumnIndex("shortkey")));
             dowhat.add(result.getString(result.getColumnIndex("dowhat")));
             stars.add(result.getInt(result.getColumnIndex("star")));
@@ -69,12 +74,39 @@ public class Stars extends AppCompatActivity {
 
         for(int i=0;i<max;i++) {
             if(stars.get(i)==0) {
-                adapter.addItem(ContextCompat.getDrawable(this, R.drawable.bin_heart),
-                        shortkey.get(i), dowhat.get(i));
-            }
-            else{
-                adapter.addItem(ContextCompat.getDrawable(this, R.drawable.full_heart),
-                        shortkey.get(i), dowhat.get(i));
+                if(pgname.equals("DeAi")) {
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.illustrator),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.equals("DePh")){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.photoshop),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.equals("DvEc") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.eclipse),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.equals("DvVs") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.visualstudio),
+                            shortkey.get(i), dowhat.get(i));
+                }
+
+                else if(pgname.equals("DvEd") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.editplus),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.equals("WoHn") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.hangul),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else if(pgname.equals("WoEx") == true){
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.excel),
+                            shortkey.get(i), dowhat.get(i));
+                }
+                else/* if(pgname.equals("WoPt") == true)*/{
+                    adapter.addItem(ContextCompat.getDrawable(this, R.drawable.powerpoint),
+                            shortkey.get(i), dowhat.get(i));
+                }
             }
         }
 

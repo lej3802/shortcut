@@ -85,13 +85,13 @@ public class MainActivity extends AppCompatActivity {
         dbresult+="db cre, ";
 
         //테이블 열렸으면 삭제
-
+/*
         if(DB.isOpen()){
             String sql = "drop table data";
             DB.execSQL(sql);
             dbresult+="tab drop, ";
         }
-
+*/
 
 
         //테이블 생성
@@ -130,8 +130,8 @@ public class MainActivity extends AppCompatActivity {
         /*
         if (id == R.id.action_settings) {
             return true;
-        }
-        */
+        }*/
+
 
         return super.onOptionsItemSelected(item);
     }
